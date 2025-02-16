@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة استهلاك الكهرباء</title>
+    <style>
+        body {
+            background-image: url('https://www2.0zz0.com/2025/02/16/21/195134787.jpeg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* صندوق كلمة "حاسبة استهلاك الكهرباء" */
+        .header-box {
+            background-color: #006400; /* أخضر غامق */
+            color: white;
+            padding: 15px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-bottom: 20px; /* مسافة بينه وبين الصندوق التالي */
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* صندوق الإدخال */
+        input[type="number"] {
+            padding: 15px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        /* صندوق الناتج */
+        .result-box {
+            background-color: #4CAF50; /* أخضر */
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-box">حاسبة استهلاك الكهرباء</div>
+
+    <input type="number" id="inputNumber" placeholder="أدخل رقم" oninput="calculate()">
+
+    <div class="result-box">
+        <p id="result">الناتج النهائي: 0</p>
+    </div>
+
+    <script>
+        function calculate() {
+            // الحصول على الرقم المدخل من المستخدم
+            let number = parseFloat(document.getElementById("inputNumber").value);
+
+            // التأكد من أن الرقم ليس فارغًا
+            if (isNaN(number)) {
+                document.getElementById("result").innerText = "الناتج النهائي: 0";
+                return;
+            }
+
+            // الخطوة 1: ضرب الرقم في 18
+            let result = number * 18;
+
+            // الخطوة 2: تقسيم الناتج على 100
+            result = result / 100;
+
+            // الخطوة 3: زيادة الناتج بنسبة 15%
+            result = result + (result * 0.15);
+
+            // عرض الناتج النهائي
+            document.getElementById("result").innerText = "الناتج النهائي: " + result.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
